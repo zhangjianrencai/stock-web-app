@@ -1,0 +1,33 @@
+<div class="content">
+  <form class="form-signin" name="signup">  
+      <div class="form-label-group">
+        <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="username" id="inputName" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputName">Username</label>
+      </div>
+    
+      <div class="form-label-group">
+        <input [ngModelOptions]="{standalone: true}" type="password" [(ngModel)]="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
+      </div>
+
+      <div class="form-label-group">
+        <input [ngModelOptions]="{standalone: true}" type="email" [(ngModel)]="email" id="inputEmail" class="form-control" placeholder="Email" required>
+        <label for="inputEmail">Email</label>
+      </div>
+
+      <div class="form-label-group">
+        <input [ngModelOptions]="{standalone: true}" type="tel" [(ngModel)]="mobileNumber" id="inputMobileNumber" class="form-control" placeholder="Mobile Number" required>
+        <label for="inputMobileNumber">Mobile Number</label>
+      </div>
+
+      <div class="form-label-group align-block">
+        Admin <input [ngModelOptions]="{standalone: true}" type="radio" [(ngModel)]="userType" (ngModelChange)="handleTypeChange()" name="type" value="1">&nbsp;&nbsp;
+        User <input [ngModelOptions]="{standalone: true}" type="radio" [(ngModel)]="userType" (ngModelChange)="handleTypeChange()" name="type" value="0">
+      </div>
+    
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="handleSignUp()">Sign up</button>
+      <a class="align-block" href="/signin">Click here to sign in</a>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021</p>
+  </form>
+</div>
+

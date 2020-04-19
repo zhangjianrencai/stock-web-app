@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -9,14 +9,22 @@ interface BroadcastEvent {
 
 @Injectable()
 export class Broadcaster {
-  private eventBus: Subject<BroadcastEvent>;
+  private eventBus: EventEmitter<BroadcastEvent>;
 
   constructor() {
-    this.eventBus = new Subject<BroadcastEvent>();
+    this.eventBus = new EventEmitter<BroadcastEvent>();
   }
 
   broadcast(key: any, data?: any) {
-    this.eventBus.next({key, data});
+    this.eventBus.emit({key: key, data: data});
+  }
+
+  subscrible(key: string, callback: any): void {
+    this.eventBus.subscribe(event => {
+      if (event && event.key == key) {
+        callback(event.data);
+      }
+    });
   }
 
 }

@@ -1,1 +1,36 @@
-<p>upate works</p>
+<div class="content">
+    <form class="form-update" name="update-profile" *ngIf="!!isProfile">  
+        <div class="form-label-group">
+          <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="username" id="inputName" class="form-control" placeholder="Username" required autofocus>
+          <label for="inputName">User Name</label>
+        </div>
+        <div class="form-label-group">
+            <input [ngModelOptions]="{standalone: true}" type="email" [(ngModel)]="email" id="inputEmail" class="form-control" placeholder="Email" required>
+            <label for="inputEmail">Email</label>
+          </div>
+          <div class="form-label-group">
+            <input [ngModelOptions]="{standalone: true}" type="tel" [(ngModel)]="mobileNumber" id="inputMobileNumber" class="form-control" placeholder="Mobile Number" required>
+            <label for="inputMobileNumber">Mobile Number</label>
+          </div>
+          <div class="btn-zone">
+            <button class="btn btn-lg btn-primary" type="submit" (click)="handleUpdateProfile()">Update</button>
+            <button class="btn btn-lg btn-secondary" type="submit" (click)="handleCancelProfile()">Cancel</button>
+            </div>
+    </form>
+    <form class="form-update" name="update-password" *ngIf="!isProfile">
+        <div class="form-label-group">
+            <input [ngModelOptions]="{standalone: true}" type="password" [(ngModel)]="oldPassword" id="inputOldPassword" class="form-control" placeholder="Old Password" required>
+            <label for="inputPassword">Old Password</label>
+          </div>
+          <div class="form-label-group">
+            <input [ngModelOptions]="{standalone: true}" type="password" [(ngModel)]="newPassword" id="inputNewPassword" class="form-control" placeholder="New Password" required>
+            <label for="inputPassword">New Password</label>
+          </div>
+          <div class="btn-zone">
+            <button class="btn btn-lg btn-primary" type="submit" (click)="handleUpdatePassword()">Update</button>
+            <button class="btn btn-lg btn-secondary" type="submit" (click)="handleCancelPassword()">Cancel</button>
+          </div>
+    </form>
+  </div>
+  
+  

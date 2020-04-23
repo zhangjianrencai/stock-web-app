@@ -1,3 +1,3 @@
-export const CONSTANT = {
-  "TEST": "TEST"
+export const EVENT_CONSTANT = {
+  "GREETING": "GREETING"
 }

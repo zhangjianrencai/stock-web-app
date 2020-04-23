@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterStateSnapshot } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { EVENT_CONSTANT } from 'src/app/common';
 
 
 const enum Tab {
@@ -24,14 +25,11 @@ export class AdminComponent implements OnInit {
   constructor(
     private router: Router
   ) { 
-    this.currentTab = Tab.IMPORTDATA;
+    
   }
 
   ngOnInit() {
-    this.registerEvents();
-  }
-
-  private registerEvents() {
+    this.getCurrentTab(this.router.url);
     this.router.events.pipe(
       filter(evt => evt instanceof NavigationEnd)
     ).subscribe((nav) => {

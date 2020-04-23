@@ -1,1 +1,13 @@
-<p>ipo works</p>
+<div class="main-content">
+    <div class="colums">
+        <div class="colum-title">
+            <span class="colum-2">Company Name</span>
+            <span class="colum-2">Stock Exchange</span>
+            <span class="colum-2">Price Per Share</span>
+            <span class="colum-2">Total Number Of Shares</span>
+            <span class="colum-2">Open Date Time</span>
+            <span class="colum-2">Remarks</span>
+        </div>
+        <user-ipo-item *ngFor="let item of itemList" [item]="item"></user-ipo-item>
+    </div>
+</div>                                                    

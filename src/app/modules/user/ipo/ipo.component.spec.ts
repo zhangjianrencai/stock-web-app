@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IPOComponent } from './ipo.component';
 
 describe('IPOComponent', () => {

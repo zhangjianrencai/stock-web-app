@@ -1,1 +1,18 @@
-<p>import data works</p>
+<div class="main-content">
+    <div class="btn-center">
+        <button type="button" class="btn btn-outline-primary" (click)="open()">Add IPO</button>
+    </div>
+
+    <div class="colums">
+        <div class="colum-title">
+            <span class="colum-2">Company Name</span>
+            <span class="colum-2">Stock Exchange</span>
+            <span class="colum-2">Price Per Share</span>
+            <span class="colum-2">Total Number Of Shares</span>
+            <span class="colum-2">Open Date Time</span>
+            <span class="colum-2">Remarks</span>
+            <span class="colum-2">Operate</span>
+        </div>
+        <ipo-item *ngFor="let item of itemList" [item]="item"></ipo-item>
+    </div>
+</div>                                                    

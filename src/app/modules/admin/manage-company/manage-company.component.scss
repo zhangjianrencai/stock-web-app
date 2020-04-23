@@ -1,9 +1,24 @@
-::ng-deep .admin-page {
-  .page-title {
-    margin-top: 20px;
+.main-content {
+  .btn-center {
+    text-align: center;
+    padding: 20px;
   }
+  .colums {
+    background-color: powderblue;
+    width: 100%;
+  
+    .colum-title {
+      font-weight: 500;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+     
+      .colum-2 {
+        display: inline-block;
+        width: calc(100% / 7);
+        border:1px solid gray;
+      }
+    }
 
-  input[type="date"] {
-    margin-bottom: 20px;
   }
 }

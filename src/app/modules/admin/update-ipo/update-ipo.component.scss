@@ -1,9 +1,1 @@
-::ng-deep .admin-page {
-  .page-title {
-    margin-top: 20px;
-  }
-
-  input[type="date"] {
-    margin-bottom: 20px;
-  }
-}
+@import "../manage-company/manage-company.component.scss"

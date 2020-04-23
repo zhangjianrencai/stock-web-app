@@ -1,0 +1,16 @@
+.colum-content {
+    .colum-2 {
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+      background-color: beige;
+      display: inline-block;
+      width: calc(100% / 5);
+    }
+    .align-center {
+      text-align: center;
+      button {
+        margin-right: 10px;
+      }
+    }
+}

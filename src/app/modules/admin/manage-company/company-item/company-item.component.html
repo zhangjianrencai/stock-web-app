@@ -1,0 +1,17 @@
+<div class="colum-content">
+    <div class="first-level">
+        <div class="colum-2">{{item.companyName}}</div>
+        <div class="colum-2">{{item.trunover}}</div>
+        <div class="colum-2">{{item.ceo}}</div>
+        <div class="colum-2">{{item.director}}</div>
+        <div class="colum-2">{{item.stockExchange}}</div>
+        <div class="colum-2">{{item.sector}}</div>
+        <div class="colum-2 align-center">
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="handleEdit()">Edit</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="handleDelete()">Del</button>
+        </div>
+    </div>
+    <div class="second-level">
+        <span>{{item.brief}}</span>
+    </div>
+</div>

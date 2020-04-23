@@ -1,9 +1,16 @@
-::ng-deep .admin-page {
-  .page-title {
-    margin-top: 20px;
-  }
-
-  input[type="date"] {
-    margin-bottom: 20px;
+.content {
+  position: relative;
+  top: 40%;
+  width: 400px;
+  left: 50%;
+  margin-left: -0.5 * 400px;
+  transform: translate(0, -50%);
+  .btn-zone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;;
+    button {
+      width: 40%;
+    }
   }
 }

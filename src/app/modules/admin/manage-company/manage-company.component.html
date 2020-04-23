@@ -1,1 +1,18 @@
-<p>import data works</p>
+<div class="main-content">
+    <div class="btn-center">
+        <button type="button" class="btn btn-outline-primary" (click)="open()">Add Company</button>
+    </div>
+
+    <div class="colums">
+        <div class="colum-title">
+            <span class="colum-2">Company Name</span>
+            <span class="colum-2">Turnover</span>
+            <span class="colum-2">CEO</span>
+            <span class="colum-2">Board of Deractors</span>
+            <span class="colum-2">Stock Exchange</span>
+            <span class="colum-2">Sector</span>
+            <span class="colum-2">Operate</span>
+        </div>
+        <company-item *ngFor="let item of itemList" [item]="item"></company-item>
+    </div>
+</div>

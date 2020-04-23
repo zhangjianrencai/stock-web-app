@@ -1,0 +1,19 @@
+.colum-content {
+  height: 40px;
+    .colum-2 {
+      line-height: 40px;
+      padding: 0 10px;
+      background-color: beige;
+      display: inline-block;
+      width: calc(100% / 6);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .align-center {
+      text-align: center;
+      button {
+        margin-right: 10px;
+      }
+    }
+}

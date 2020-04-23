@@ -1,1 +1,16 @@
-<p>import data works</p>
+<div class="main-content">
+    <div class="btn-center">
+        <button type="button" class="btn btn-outline-primary" (click)="open()">Add Exchange</button>
+    </div>
+
+    <div class="colums">
+        <div class="colum-title">
+            <span class="colum-2">Stock Exchange</span>
+            <span class="colum-2">Brief</span>
+            <span class="colum-2">Contact Address</span>
+            <span class="colum-2">Remarks</span>
+            <span class="colum-2">Operate</span>
+        </div>
+        <exchange-item *ngFor="let item of itemList" [item]="item"></exchange-item>
+    </div>
+</div>

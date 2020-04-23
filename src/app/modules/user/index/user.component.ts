@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { Broadcaster, EVENT_CONSTANT } from 'src/app/common';
 
 const enum Tab {
   IPO = 'IPO',
@@ -19,21 +20,19 @@ export class UserComponent implements OnInit {
   currentTab: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private _broadcast: Broadcaster
   ) { 
     this.currentTab = Tab.IPO;
   }
 
   ngOnInit() {
-    this.registerEvents();
-  }
-
-  private registerEvents() {
     this.router.events.pipe(
       filter(evt => evt instanceof NavigationEnd)
     ).subscribe((nav) => {
       this.getCurrentTab(this.router.url);
     })
+    this.getCurrentTab(this.router.url);
   }
 
   private getCurrentTab(url: string) {

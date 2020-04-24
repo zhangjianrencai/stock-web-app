@@ -1,0 +1,27 @@
+<div class="modal-header" style="background-color: red;">
+  <h4 class="modal-title" >{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="item">
+    <label>Company Name</label><span>LTD</span>
+  </div>
+  <div class="item">
+    <label>Stock Exchange</label><span>BSE</span>
+  </div>
+  <div class="item">
+    <label>Price Per Share</label><span>80</span>
+  </div>
+
+  <div class="item">
+    <label>From Date</label><span>2019-07-20</span>
+  </div>
+  <div class="item">
+    <label>To Date</label><span>2020-10-22</span>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close('Close click')">OK</button>
+</div>

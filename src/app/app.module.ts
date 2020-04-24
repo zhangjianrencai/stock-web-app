@@ -17,6 +17,7 @@ import { MEModalContent } from './directives/modal/manage-exchange-modal/manage-
 import { UIModalContent } from './directives/modal/update-ipo-modal/update-ipo-modal.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDModalContent } from './directives/modal/import-data-modal/import-data-modal.component';
 
 
 
@@ -28,7 +29,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     SignInComponent,
     MCModalContent,
     MEModalContent,
-    UIModalContent
+    UIModalContent,
+    IDModalContent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
   entryComponents: [
     MCModalContent,
     MEModalContent,
-    UIModalContent
+    UIModalContent,
+    IDModalContent
   ]
 })
 export class AppModule { }

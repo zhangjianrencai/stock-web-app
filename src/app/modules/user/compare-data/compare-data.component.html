@@ -1,1 +1,56 @@
-<p>compare works</p>
+<div class="main-content">
+    <div class="up-part">
+        <div class="left-zone">
+            <div class="left-filter-sector" *ngFor="let filter of filterList">
+    <!--             <div class="filter-sector">
+                    <span>Type</span>
+                    <div class="singleInput">    
+                        <ng-multiselect-dropdown [settings]="dropdownSettings"
+                        [placeholder]="'custom placeholder'"
+                        [data]="dropdownList"
+                        [(ngModel)]="selectedItems"
+                        (onSelect)="onItemSelect($event)"></ng-multiselect-dropdown>
+                    </div>
+                </div> -->
+                
+                <div class="filter-sector">
+                    <span>Stock Exchange</span>
+                    <div class="singleInput">    
+                        <ng-multiselect-dropdown [settings]="dropdownSettings"
+                        [placeholder]="'custom placeholder'"
+                        [data]="filter.dropdownList"
+                        [(ngModel)]="filter.selectedItems"
+                        (onSelect)="onItemSelect($event)"></ng-multiselect-dropdown>
+                    </div>
+                </div>
+                <div class="search-inline">
+                    <input class="form-control mr-sm-2" type="search" [(ngModel)]="filter.companyName" placeholder="Company Name" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="handleSearch()">Search</button>
+                </div>
+            </div>
+
+            <span *ngIf="displayWarning" style= "color: red;">You only could compare two Company's data</span>
+            <div class="inline-btn">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="handleAdd()">Add</button>
+            </div>
+        </div>
+        <div class="right-zone">
+            <div class="filter-sector">
+                <span>Start Date</span>
+                <input type="date" />
+            </div>
+            
+            <div class="filter-sector">
+                <span>End Date</span>
+                <input type="date" />
+            </div>
+            
+            <div class="inline-btn">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="handleGenerateChart()">Generate Map</button>
+            </div>
+        </div>
+    </div>
+    <div class="result-zone">
+        <div echarts [options]="option" style="height: 500px; width: 100%;"></div>
+    </div>
+</div>  

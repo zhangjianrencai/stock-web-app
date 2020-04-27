@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CompareDataComponent } from './compare-data.component';
 
-import { IPOComponent } from './ipo.component';
-
-describe('IPOComponent', () => {
-  let component: IPOComponent;
-  let fixture: ComponentFixture<IPOComponent>;
+describe('CompareDataComponent', () => {
+  let component: CompareDataComponent;
+  let fixture: ComponentFixture<CompareDataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IPOComponent ]
+      declarations: [ CompareDataComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IPOComponent);
+    fixture = TestBed.createComponent(CompareDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

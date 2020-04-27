@@ -9,8 +9,8 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'stock-web-app';
   greeting: string;
+  isShow = true;
 
   constructor(
     private _broadcast: Broadcaster,
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     ).subscribe((nav) => {
       let snapShotUrl = this.router.url.toUpperCase();
       snapShotUrl.indexOf('/USER') > -1 ? this.greeting = 'Hi, User' : this.greeting = 'Hi, Admin';
+      snapShotUrl.indexOf('/SIGNIN') > -1 || snapShotUrl.indexOf('/SIGNUP') > -1 ? this.isShow = false : this.isShow = true;
     })
-
   }
 }

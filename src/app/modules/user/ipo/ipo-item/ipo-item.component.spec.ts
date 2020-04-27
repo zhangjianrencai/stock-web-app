@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IpoItemComponent } from './ipo-item.component';
+import { UserIpoItemComponent } from './ipo-item.component';
 
 
-describe('IpoItemComponent', () => {
-  let component: IpoItemComponent;
-  let fixture: ComponentFixture<IpoItemComponent>;
+describe('UserIpoItemComponent', () => {
+  let component: UserIpoItemComponent;
+  let fixture: ComponentFixture<UserIpoItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IpoItemComponent ]
+      declarations: [ UserIpoItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IpoItemComponent);
+    fixture = TestBed.createComponent(UserIpoItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

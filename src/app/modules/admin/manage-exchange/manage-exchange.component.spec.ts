@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ManageExchangeComponent } from './manage-exchange.component';
 
-import { ImportDataComponent } from './import-data.component';
 
-describe('ImportDataComponent', () => {
-  let component: ImportDataComponent;
-  let fixture: ComponentFixture<ImportDataComponent>;
+describe('ManageExchangeComponent', () => {
+  let component: ManageExchangeComponent;
+  let fixture: ComponentFixture<ManageExchangeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImportDataComponent ]
+      declarations: [ ManageExchangeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImportDataComponent);
+    fixture = TestBed.createComponent(ManageExchangeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

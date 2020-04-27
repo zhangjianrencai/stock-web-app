@@ -8,13 +8,18 @@ import { IPOComponent } from './ipo/ipo.component';
 import { CompareDataComponent } from './compare-data/compare-data.component';
 import { UpdateComponent } from './update/update.component';
 import { UserIpoItemComponent } from './ipo/ipo-item/ipo-item.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    UserRoutingModule
+    UserRoutingModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    NgxEchartsModule
+
   ],
   declarations: [
     UserComponent,

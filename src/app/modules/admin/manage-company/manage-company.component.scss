@@ -17,6 +17,10 @@
         display: inline-block;
         width: calc(100% / 7);
         border:1px solid gray;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 400px;
       }
     }
 

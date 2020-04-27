@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-up-compnent',
@@ -13,7 +14,9 @@ export class SignUpComponent implements OnInit {
   public email: string;
   public mobileNumber: string;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.userType = "0";
@@ -25,7 +28,18 @@ export class SignUpComponent implements OnInit {
   }
 
   public handleSignUp(): void {
-
+    let user = {
+      userName: "Test",
+      password: "123456",
+      userType: "1",
+      email: "1@qq.com",
+      mobileNumber: "213123"
+    }
+    this.userService.saveUserInfo(user).subscribe(success=>{
+      console.log('success');
+    },error=>{
+      console.log('failure');
+    });
   }
 
 }

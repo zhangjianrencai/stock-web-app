@@ -19,6 +19,6 @@ export class UserService {
     }
 
     saveUserInfo = function (user: any) : Observable<any> {
-        return this._http.post(this.apiPre + APIS.SAVE_USER, user);
+        return this._http.post(this.apiPre + APIS.SAVE_USER, JSON.stringify(user));
     }
 }

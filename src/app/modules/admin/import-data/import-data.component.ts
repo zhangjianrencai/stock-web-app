@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IDModalContent } from 'src/app/directives/modal/import-data-modal/import-data-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 declare var $ : any;
@@ -8,7 +8,7 @@ declare var $ : any;
   templateUrl: './import-data.component.html',
   styleUrls: ['./import-data.component.scss']
 })
-export class ImportDataComponent implements OnInit, AfterViewChecked {
+export class ImportDataComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal
@@ -19,7 +19,8 @@ export class ImportDataComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     let service = this.modalService;
     $("#input-id").fileinput({
-        uploadUrl: "http://localhost/",
+        uploadUrl: "/api/upload",
+        uploadAsync: true,  //异步上传
         showPreview: false,
         showCancel: false
       }).on('fileuploaded', function(event, previewId, index, fileId) {
@@ -33,14 +34,6 @@ export class ImportDataComponent implements OnInit, AfterViewChecked {
       modalRef.componentInstance.title = "Summary of Upload";
       console.log('upload done');
     });
-  }
-
-  ngOnChanges() {
-    
-  }
-
-  ngAfterViewChecked() {
-    
   }
 
   handleClick() {

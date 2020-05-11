@@ -19,25 +19,27 @@ export class SignUpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userType = "0";
+    this.userType = '0';
   }
 
 
-  public handleTypeChange():void {
+  public handleTypeChange(): void {
     console.log(this.userType);
   }
 
   public handleSignUp(): void {
-    let user = {
-      userName: "Test",
-      password: "123456",
-      userType: "1",
-      email: "1@qq.com",
-      mobileNumber: "213123"
-    }
-    this.userService.saveUserInfo(user).subscribe(success=>{
+    const user = {
+      userName: this.username,
+      password: this.password,
+      userType: this.userType,
+      email: this.email,
+      mobileNumber: this.mobileNumber
+    };
+
+    this.userService.saveUserInfo(user).subscribe(success => {
       console.log('success');
-    },error=>{
+    },
+    error => {
       console.log('failure');
     });
   }

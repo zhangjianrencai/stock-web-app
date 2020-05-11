@@ -13,6 +13,8 @@ export class StockHttpInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headers = {};
     //headers['Authorization'] = 'xxxxx'
+    headers['Access-Control-Allow-Origin'] = '*';
+	headers['content-Type'] = 'application/json;charset=UTF-8';
     const stockRequest = req.clone({
       url: req.url,
       withCredentials: true,

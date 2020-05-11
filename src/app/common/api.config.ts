@@ -1,4 +1,5 @@
 export const APIS = {
-    SAVE_USER: '/saveUser',
-    GET_USER: '/getUser'
+    SAVE_USER: '/api/saveUser',
+    GET_USER: '/api/getUser'
 }
+

@@ -1,10 +1,10 @@
 .main-content {
   width: 500px;
   height: 300px;
-  margin: 0 auto;
-  position: relative;
+  position: absolute;
   top: 50%;
-  margin-top: -150px; 
+  left: 50%;
+  margin-left: -250px;
   .update-conent {
     display: flex;
     justify-content: space-between;

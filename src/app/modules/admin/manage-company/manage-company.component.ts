@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MCModalContent } from 'src/app/directives/modal/manage-company-modal/manage-company-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BusinessService } from 'src/app/services/business.service';
 
 @Component({
   selector: 'app-manage-company',
@@ -12,11 +13,19 @@ export class ManageCompanyComponent implements OnInit {
   itemList : Array<any>;
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private businessService: BusinessService
   ) { }
 
   ngOnInit() {
-    this.itemList = [
+    this.businessService.fetchCompanyList().subscribe(
+      data => {
+        this.itemList = data;
+      }, error => {
+        console.log('can\'t fetch company list');
+      }
+    );
+    /* this.itemList = [
       { 
         companyName: 'Google',
         trunover: '10000',
@@ -53,7 +62,7 @@ export class ManageCompanyComponent implements OnInit {
         sector: 'Technical',
         brief: 'Google is a big technology company'
       }
-    ];
+    ]; */
   }
 
   open() {

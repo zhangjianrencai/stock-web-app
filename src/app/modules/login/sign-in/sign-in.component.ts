@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { LOCAL_STG_CONSTANT, Globals, USER_TYPE } from 'src/app/common';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in-compnent',
@@ -12,15 +15,34 @@ export class SignInComponent implements OnInit {
   public password: string;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private globals: Globals
   ) { }
 
   ngOnInit(): void {
   }
 
   public handleSignIn(): void {
-    this.userService.getUserInfo('1').subscribe(success=>{
-      console.log('success');
+    const user = {
+      username: this.username,
+      password: this.password
+    }
+    this.userService.authToken(user).subscribe(success=>{
+      localStorage.setItem(LOCAL_STG_CONSTANT.STOCK_AUTH_TOKEN_lOCAL, success.id_token);
+      this.userService.getCurrentUser().subscribe(
+        data => {
+          this.globals.currentUser = data;
+          if (data.userType == USER_TYPE.USER) {
+            this.router.navigate(['user/ipo']);
+          } else {
+            this.router.navigate(['admin/importData']);
+          }
+        }, error => {
+          console.log('get user error');
+        }
+      );
+      
     },error=>{
       console.log('failure');
     });

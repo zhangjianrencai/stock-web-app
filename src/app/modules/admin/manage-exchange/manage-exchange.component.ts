@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MEModalContent } from 'src/app/directives/modal/manage-exchange-modal/manage-exchange-modal.component';
+import { BusinessService } from 'src/app/services/business.service';
 
 @Component({
   selector: 'app-manage-exchange',
@@ -11,10 +12,17 @@ export class ManageExchangeComponent implements OnInit {
 
   itemList: any;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+    private businessService: BusinessService
+    ) { }
 
   ngOnInit() {
-    this.itemList = [
+    this.businessService.fetchExchangeList().subscribe(
+      data => {
+        this.itemList = data;
+      }
+    );
+    /* this.itemList = [
       { 
         stockExchange: 'BSE',
         brief: 'new yourk',
@@ -27,7 +35,7 @@ export class ManageExchangeComponent implements OnInit {
         contactAddress: 'USA',
         remarks: 'test data'
       }
-    ]
+    ] */
   }
 
   open() {

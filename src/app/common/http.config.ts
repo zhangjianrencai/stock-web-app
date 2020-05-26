@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { finalize, tap, catchError } from 'rxjs/operators';
+import { LOCAL_STG_CONSTANT } from '.';
 
 const HTTP_TIMEOUT = 30000; // 20s
 
@@ -12,9 +13,9 @@ export class StockHttpInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headers = {};
-    //headers['Authorization'] = 'xxxxx'
+    headers['Authorization'] = localStorage.getItem(LOCAL_STG_CONSTANT.STOCK_AUTH_TOKEN_lOCAL);
     headers['Access-Control-Allow-Origin'] = '*';
-	headers['content-Type'] = 'application/json;charset=UTF-8';
+	  headers['content-Type'] = 'application/json;charset=UTF-8';
     const stockRequest = req.clone({
       url: req.url,
       withCredentials: true,

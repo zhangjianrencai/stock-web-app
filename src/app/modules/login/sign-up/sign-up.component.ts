@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up-compnent',
@@ -12,10 +13,11 @@ export class SignUpComponent implements OnInit {
   public username: string;
   public password: string;
   public email: string;
-  public mobileNumber: string;
+  public mobile: string;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +31,19 @@ export class SignUpComponent implements OnInit {
 
   public handleSignUp(): void {
     const user = {
-      userName: this.username,
+      username: this.username,
       password: this.password,
       userType: this.userType,
       email: this.email,
-      mobileNumber: this.mobileNumber
+      mobile: this.mobile
     };
 
-    this.userService.saveUserInfo(user).subscribe(success => {
-      console.log('success');
+    this.userService.regist(user).subscribe(success => {
+      if (this.userType == '0') {
+        this.router.navigate(['user/ipo']);
+      } else {
+        this.router.navigate(['admin/importData']);
+      }
     },
     error => {
       console.log('failure');

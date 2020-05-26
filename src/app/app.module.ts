@@ -19,6 +19,7 @@ import { UIModalContent } from './directives/modal/update-ipo-modal/update-ipo-m
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { IDModalContent } from './directives/modal/import-data-modal/import-data-modal.component';
 import { UserService } from './services/user.service';
+import { BusinessService } from './services/business.service';
 
 
 
@@ -50,7 +51,8 @@ import { UserService } from './services/user.service';
     AuthGuard,
     Broadcaster,
     UtilsService,
-    UserService
+    UserService,
+    BusinessService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

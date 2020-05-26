@@ -5,27 +5,41 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="item">
-    <label for="companyName">Company Name</label><input id="companyName" type="text" [(ngModel)] = "content.companyName" required/>
+  <div>
+    <label>Company Name</label>
+    <div class="pillsInput">    
+      <ng-multiselect-dropdown [settings]="dropdownSettings"
+      [placeholder]="'choose a company'"
+      [data]="companyDropdownList"
+      [(ngModel)]="companySelectedItems"
+      (onSelect)="onItemSelect($event)"></ng-multiselect-dropdown>
+    </div>
+  </div>
+  <div>
+    <label>Stock Exchange</label>
+    <div class="pillsInput">    
+      <ng-multiselect-dropdown [settings]="dropdownSettings"
+      [placeholder]="'choose a exchange'"
+      [data]="exchangeDropdownList"
+      [(ngModel)]="exchangeSelectedItems"
+      (onSelect)="onItemSelect($event)"></ng-multiselect-dropdown>
+    </div>
   </div>
   <div class="item">
-    <label for="stockExchange">Stock Exchange</label><input id="stockExchange" type="text" [(ngModel)] = "content.stockExchange" required/>
-  </div>
-  <div class="item">
-    <label for="priceShare">Price Per Share</label><input id="priceShare" type="text" [(ngModel)] = "content.share" required/>
+    <label for="priceShare">Price Per Share</label><input id="priceShare" type="text" [(ngModel)] = "content.price" required/>
   </div>
 
   <div class="item">
-    <label for="numberShare">Total Number Of Shares</label><input id="numberShare" type="text" [(ngModel)] = "content.numberShare" required/>
+    <label for="numberShare">Total Number Of Shares</label><input id="numberShare" type="text" [(ngModel)] = "content.shares" required/>
   </div>
   <div class="item">
-    <label for="openDate">Open Date Time</label><input id="openDate" type="date" [(ngModel)] = "content.openDatetime" required/>
+    <label for="openDate">Open Date Time</label><input id="openDate" type="date" [(ngModel)] = "content.dateTime" required/>
   </div>
   <div class="item">
     <label for="remarks">Remarks</label><textarea id="remarks" type="text" [(ngModel)] = "content.remarks"></textarea>
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close('Close click')">Save</button>
+  <button type="button" class="btn btn-outline-primary" (click)="handleSave();activeModal.close('Close click')">Save</button>
   <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Cancel</button>
 </div>

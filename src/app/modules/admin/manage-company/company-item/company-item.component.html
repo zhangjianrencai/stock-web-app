@@ -1,11 +1,19 @@
 <div class="colum-content">
     <div class="first-level">
         <div class="colum-2">{{item.companyName}}</div>
-        <div class="colum-2">{{item.trunover}}</div>
+        <div class="colum-2">{{item.turnover}}</div>
         <div class="colum-2">{{item.ceo}}</div>
-        <div class="colum-2">{{item.director}}</div>
-        <div class="colum-2">{{item.stockExchange}}</div>
-        <div class="colum-2">{{item.sector}}</div>
+        <div class="colum-2">{{item.directors}}</div>
+        <div class="colum-2">
+            <span *ngFor="let son of item.exchange">
+                {{son.stockExchange}}
+            </span>
+        </div>
+        <div class="colum-2">
+            <span *ngFor="let son of item.sector">
+                {{son.sectorName}}
+            </span>
+        </div>
         <div class="colum-2 align-center">
             <button type="button" class="btn btn-outline-primary btn-sm" (click)="handleEdit()">Edit</button>
             <button type="button" class="btn btn-outline-secondary btn-sm" (click)="handleDelete()">Del</button>

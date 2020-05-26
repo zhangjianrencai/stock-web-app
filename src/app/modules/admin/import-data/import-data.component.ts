@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IDModalContent } from 'src/app/directives/modal/import-data-modal/import-data-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { APIS, Globals } from 'src/app/common';
+import { BusinessService } from 'src/app/services/business.service';
+import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 declare var $ : any;
 
 @Component({
@@ -11,7 +15,10 @@ declare var $ : any;
 export class ImportDataComponent implements OnInit {
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private businessService: BusinessService,
+    private router: Router,
+    private globals: Globals
   ) { 
    
   }
@@ -19,7 +26,7 @@ export class ImportDataComponent implements OnInit {
   ngOnInit() {
     let service = this.modalService;
     $("#input-id").fileinput({
-        uploadUrl: "/api/upload",
+        uploadUrl: APIS.STOCK_SERVICE_BUSINESS.UPLOAD,
         uploadAsync: true,  //异步上传
         showPreview: false,
         showCancel: false
@@ -34,6 +41,16 @@ export class ImportDataComponent implements OnInit {
       modalRef.componentInstance.title = "Summary of Upload";
       console.log('upload done');
     });
+    let companyList = this.businessService.fetchCompanyList();
+    let exchangeList = this.businessService.fetchExchangeList();
+    forkJoin(companyList, exchangeList).subscribe(
+      data => {
+        this.globals.companyList = data[0];
+        this.globals.exchangeList = data[1];
+      }, error=> {
+        this.router.navigate(['signin']);
+      }
+    );
   }
 
   handleClick() {

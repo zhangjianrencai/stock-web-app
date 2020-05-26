@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UIModalContent } from 'src/app/directives/modal/update-ipo-modal/update-ipo-modal.component';
+import { BusinessService } from 'src/app/services/business.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-ipo',
@@ -11,7 +13,8 @@ export class IPOComponent implements OnInit {
 
   itemList: any;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+    private businessService: BusinessService) { }
 
   ngOnInit() {
     this.itemList = [
@@ -33,5 +36,16 @@ export class IPOComponent implements OnInit {
       }
       
     ]
+
+    let fetchIPOItemList = this.businessService.fetchIPOItemList();
+    let fetch
+    forkJoin
+    this.businessService.fetchIPOItemList().subscribe(
+      data => {
+        this.itemList = data;
+      }, error => {
+        console.log('error');
+      }
+    );
   }
 }

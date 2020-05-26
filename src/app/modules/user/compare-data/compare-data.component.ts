@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { BusinessService } from 'src/app/services/business.service';
 
 @Component({
   selector: 'app-compare-data',
@@ -15,7 +16,7 @@ export class CompareDataComponent implements OnInit {
   displayWarning = false;
   option: any;
   
-  constructor() { }
+  constructor(private businessService: BusinessService) { }
 
   ngOnInit() {
     this.dropdownList = [

@@ -25,24 +25,22 @@
                 </div>
                 <div class="search-inline">
                     <input class="form-control mr-sm-2" type="search" [(ngModel)]="filter.companyName" placeholder="Company Name" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="handleSearch()">Search</button>
                 </div>
             </div>
-
-            <span *ngIf="displayWarning" style= "color: red;">You only could compare two Company's data</span>
             <div class="inline-btn">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="handleAdd()">Add</button>
+               <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="handleAdd()">Add</button>
             </div>
+            <span *ngIf="displayWarning" style= "color: red;">You only could compare two Company's data</span>
         </div>
         <div class="right-zone">
             <div class="filter-sector">
                 <span>Start Date</span>
-                <input type="date" />
+                <input class="form-control mr-sm-2" type="date" [(ngModel)]="startDate"/>
             </div>
             
             <div class="filter-sector">
                 <span>End Date</span>
-                <input type="date" />
+                <input class="form-control mr-sm-2" type="date" [(ngModel)]="endDate"/>
             </div>
             
             <div class="inline-btn">

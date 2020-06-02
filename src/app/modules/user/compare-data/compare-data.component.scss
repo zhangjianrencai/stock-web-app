@@ -33,10 +33,14 @@
       
       .filter-sector {    
         padding: 20px;
+        display: flex;
+        align-items: center;
+      
         input {
           width: 200px;
         }
         span {
+          width: 80px;
           margin-right: 20px;
         }
       }

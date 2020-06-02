@@ -17,34 +17,18 @@ export class IPOComponent implements OnInit {
     private businessService: BusinessService) { }
 
   ngOnInit() {
-    this.itemList = [
-      { 
-        companyName: 'Google',
-        stockExchange: '10000',
-        share: '10',
-        numberShare: '100',
-        openDatetime: '2019/07/07',
-        remarks: 'Google is a big technology company'
-      },
-      { 
-        companyName: 'Google',
-        stockExchange: '10000',
-        share: '10',
-        numberShare: '100',
-        openDatetime: '2019/07/07',
-        remarks: 'Google is a big technology company'
-      }
-      
-    ]
-
-    let fetchIPOItemList = this.businessService.fetchIPOItemList();
-    let fetch
-    forkJoin
-    this.businessService.fetchIPOItemList().subscribe(
+    let fetchIPOItemList = this.businessService.fetchUserIPOItemList();
+    let fetchCompanyList = this.businessService.fetchCompanyList();
+    forkJoin(fetchCompanyList, fetchIPOItemList).subscribe(
       data => {
-        this.itemList = data;
+        data[0].forEach(ele => {
+          let stockInfo = data[1].filter(item => item[1] === ele.stockCode);
+          ele['stockPrice'] = stockInfo[0][2];
+        });
+      this.itemList = data[0];
+      console.log(this.itemList);
       }, error => {
-        console.log('error');
+        console.log('get api error');
       }
     );
   }

@@ -26,7 +26,7 @@ export class ImportDataComponent implements OnInit {
   ngOnInit() {
     let service = this.modalService;
     $("#input-id").fileinput({
-        uploadUrl: APIS.STOCK_SERVICE_BUSINESS.UPLOAD,
+        uploadUrl: APIS.STOCK_SERVICE_UPLOAD + 'upload',
         uploadAsync: true,  //异步上传
         showPreview: false,
         showCancel: false

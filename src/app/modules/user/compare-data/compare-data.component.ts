@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BusinessService } from 'src/app/services/business.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-compare-data',
@@ -15,6 +16,9 @@ export class CompareDataComponent implements OnInit {
   filterList = [];
   displayWarning = false;
   option: any;
+  startDate: string;
+  endDate: string;
+  conpareDateList = [];
   
   constructor(private businessService: BusinessService) { }
 
@@ -56,18 +60,61 @@ export class CompareDataComponent implements OnInit {
   }
 
   handleGenerateChart() {
-    this.generateCharts('');
+    console.log(this.filterList);
+    let apiArray = [];
+    this.filterList.forEach(
+      item => {
+        if (!item.companyName) {
+          console.log('companyName error');
+        } else {
+          apiArray.push(this.businessService.companyStockPrice(item.companyName, this.startDate + ' 00:00:00', this.endDate + ' 23:59:59'));
+        }
+      }
+    )
+    forkJoin(...apiArray).subscribe(
+      data => {
+        this.conpareDateList = data;
+        this.generateCharts(data);
+      }, err => {
+        console.log('API error');
+      }
+    );
+    
   }
 
-  handleSearch() {
+  handleSearch(name) {
 
   }
 
-  private generateCharts(data) {
+  private generateCharts(compareDataSet) {
+    let nameList = [];
+    let timeInterval = [];
+    let seriesList = [];
+    compareDataSet.forEach(element => {
+      nameList.push(element.companyName);
+      timeInterval.push(element.time);
+      seriesList.push(          
+          {
+          name: element.companyName,
+          type: 'bar',
+          data: element.price,
+          markPoint: {
+              data: [
+                  {type: 'max', name: '最大值'},
+                  {type: 'min', name: '最小值'}
+              ]
+          },
+          markLine: {
+              data: [
+                  {type: 'average', name: '平均值'}
+              ]
+          }
+      });
+    });
     this.option = {
       title: {
           text: 'Stock Price',
-          subtext: 'fake'
+          subtext: ''
       },
       tooltip: {
           trigger: 'axis'
@@ -79,7 +126,7 @@ export class CompareDataComponent implements OnInit {
       xAxis: [
           {
               type: 'category',
-              data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+              data: timeInterval[0]
           }
       ],
       yAxis: [
@@ -87,40 +134,7 @@ export class CompareDataComponent implements OnInit {
               type: 'value'
           }
       ],
-      series: [
-          {
-              name: 'Alibaba',
-              type: 'bar',
-              data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-              markPoint: {
-                  data: [
-                      {type: 'max', name: '最大值'},
-                      {type: 'min', name: '最小值'}
-                  ]
-              },
-              markLine: {
-                  data: [
-                      {type: 'average', name: '平均值'}
-                  ]
-              }
-          },
-          {
-              name: 'Goolge',
-              type: 'bar',
-              data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-              markPoint: {
-                  data: [
-                      {type: 'max', name: '最大值'},
-                      {type: 'min', name: '最小值'}
-                  ]
-              },
-              markLine: {
-                  data: [
-                      {type: 'average', name: '平均值'}
-                  ]
-              }
-          }
-      ]
+      series: seriesList
   };
   
   }

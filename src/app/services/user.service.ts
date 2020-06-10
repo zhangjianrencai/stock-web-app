@@ -23,7 +23,7 @@ export class UserService {
     }
 
     updateUser = function (user: any) : Observable<any> {
-        return this._http.post(environment.API_HOST + APIS.STOCK_SERVICE_AUTH + 'update', JSON.stringify(user));
+        return this._http.put(environment.API_HOST + APIS.STOCK_SERVICE_AUTH + 'update', JSON.stringify(user));
     }
 
     getCurrentUser = function () {

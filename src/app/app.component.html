@@ -1,5 +1,5 @@
 <div class="first-nav" *ngIf="isShow">
     <span class="welcome">{{greeting}}</span>
-    <button type="button" class="btn btn-outline-primary">Logout</button>
+    <button type="button" (click)="logout()" class="btn btn-outline-primary">Logout</button>
 </div>
 <router-outlet></router-outlet>

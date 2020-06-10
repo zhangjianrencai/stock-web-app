@@ -9,7 +9,7 @@
             <label for="inputEmail">Email</label>
           </div>
           <div class="form-label-group">
-            <input [ngModelOptions]="{standalone: true}" type="tel" [(ngModel)]="mobileNumber" id="inputMobileNumber" class="form-control" placeholder="Mobile Number" required>
+            <input [ngModelOptions]="{standalone: true}" type="tel" [(ngModel)]="mobile" id="inputMobileNumber" class="form-control" placeholder="Mobile Number" required>
             <label for="inputMobileNumber">Mobile Number</label>
           </div>
           <div class="btn-zone">
@@ -20,11 +20,11 @@
     <form class="form-update" name="update-password" *ngIf="!isProfile">
         <div class="form-label-group">
             <input [ngModelOptions]="{standalone: true}" type="password" [(ngModel)]="oldPassword" id="inputOldPassword" class="form-control" placeholder="Old Password" required>
-            <label for="inputPassword">Old Password</label>
+            <label for="inputPassword">New Password 1st</label>
           </div>
           <div class="form-label-group">
             <input [ngModelOptions]="{standalone: true}" type="password" [(ngModel)]="newPassword" id="inputNewPassword" class="form-control" placeholder="New Password" required>
-            <label for="inputPassword">New Password</label>
+            <label for="inputPassword">New Password 2st</label>
           </div>
           <div class="btn-zone">
             <button class="btn btn-lg btn-primary" type="submit" (click)="handleUpdatePassword()">Update</button>

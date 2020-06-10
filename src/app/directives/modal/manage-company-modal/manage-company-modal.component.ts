@@ -42,10 +42,12 @@ export class MCModalContent implements OnInit{
 
   handleSave() {
     let company = {
-      stockExchange: this.content.stockExchange,
+      companyName: this.content.companyName,
+      turnover: this.content.turnover,
+      ceo: this.content.ceo,
+      directors: this.content.directors,
       brief: this.content.brief,
-      contactAddress: this.content.contactAddress,
-      remarks: this.content.remarks
+      stockCode: this.content.stockCode
     }
     if (this.isAddFunction) {
       this.businessService.addCompany(company).subscribe(

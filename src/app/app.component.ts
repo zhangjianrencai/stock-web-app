@@ -32,4 +32,8 @@ export class AppComponent implements OnInit {
       snapShotUrl.indexOf('/SIGNIN') > -1 || snapShotUrl.indexOf('/SIGNUP') > -1 ? this.isShow = false : this.isShow = true;
     })
   }
+
+  logout() {
+    this.router.navigate(['signin']);
+  }
 }

@@ -33,6 +33,7 @@ export class SignInComponent implements OnInit {
       this.userService.getCurrentUser().subscribe(
         data => {
           this.globals.currentUser = data;
+          this.globals.currentUser['password'] = this.password;
           if (data.userType == USER_TYPE.USER) {
             this.router.navigate(['user/ipo']);
           } else {

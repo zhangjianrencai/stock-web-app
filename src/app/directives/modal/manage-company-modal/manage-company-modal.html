@@ -1,5 +1,5 @@
 <div class="modal-header" style="background-color: red;">
-  <h4 class="modal-title" >Hi there!</h4>
+  <h4 class="modal-title" >{{title}}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -14,24 +14,11 @@
   <div class="item">
     <label for="turnover">Turnover</label><input id="turnover" type="text" [(ngModel)] = "content.turnover" required/>
   </div>
-
   <div class="item">
-    <label for="sector">Sector</label><input id="sector" type="text" [(ngModel)] = "content.sector" required/>
-  </div>
-  <div class="item">
-    <label for="director">Broad of Director</label><input id="director" type="text" [(ngModel)] = "content.director" required/>
+    <label for="director">Broad of Director</label><input id="director" type="text" [(ngModel)] = "content.directors" required/>
   </div>
   <div>
-    <label>Stock</label>
-    <div class="pillsInput">    
-      <ng-multiselect-dropdown [settings]="dropdownSettings"
-      [placeholder]="'custom placeholder'"
-      [data]="dropdownList"
-      [(ngModel)]="selectedItems"
-      (onSelect)="onItemSelect($event)"
-      (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
-    </div>
-
+    <label for="stockCode">Stock Code</label><input id="stockCode" type="text" [(ngModel)] = "content.stockCode" required/>
   </div>
   <div class="item">
     <label for="briefDesc">Brief Description</label><textarea id="briefDesc" type="text" [(ngModel)] = "content.brief"></textarea>

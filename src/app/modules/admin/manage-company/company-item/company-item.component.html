@@ -4,14 +4,24 @@
         <div class="colum-2">{{item.turnover}}</div>
         <div class="colum-2">{{item.ceo}}</div>
         <div class="colum-2">{{item.directors}}</div>
-        <div class="colum-2">
+        <div class="colum-2" *ngIf="item.exchange.length != 0">
             <span *ngFor="let son of item.exchange">
                 {{son.stockExchange}}
             </span>
         </div>
-        <div class="colum-2">
+        <div class="colum-2" *ngIf="item.exchange.length == 0">
+            <span>
+                &nbsp;
+            </span>
+        </div>
+        <div class="colum-2" *ngIf="item.sector.length != 0">
             <span *ngFor="let son of item.sector">
                 {{son.sectorName}}
+            </span>
+        </div>
+        <div class="colum-2" *ngIf="item.sector.length == 0">
+            <span>
+                &nbsp;
             </span>
         </div>
         <div class="colum-2 align-center">
